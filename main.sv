@@ -22,7 +22,9 @@ module main(
 	logic IRQ_Vsync;
 	logic graphic_wren;
 	
-	logic [15:0] keyboard_out;
+	//logic [15:0] keyboard_out;
+	
+	logic IRQ_second_elapsed;
 	
 	assign clk_out = clk_in;
 	assign INT = IRQ0 | IRQ1 | IRQ2 | IRQ3 | IRQ4 | IRQ5 | IRQ6 | IRQ7;
@@ -41,7 +43,7 @@ module main(
 	.intack(INTACK));
 	
 	vga_sync vga(
-	.clk(clk_in),
+	.clk_50_mhz(clk_in),
 	.wren(graphic_wren),
 	.ldr(data_out),
 	.addr(address[5:0]),
@@ -57,6 +59,11 @@ module main(
 	//.ack(?),
 	//.dout(keyboard_out));
 	
+	timer t(
+	.clk_50_mhz(clk_in),
+	.ack(INTACK),
+	.IRQ_second_elapsed(IRQ_second_elapsed));
+	
 	always_comb begin
       IRQ0 = 1'b0;
       IRQ1 = 1'b0;
@@ -64,7 +71,7 @@ module main(
       IRQ3 = 1'b0;
       IRQ4 = 1'b0;
       IRQ5 = 1'b0;
-      IRQ6 = 1'b0;
+      IRQ6 = IRQ_second_elapsed;
       IRQ7 = IRQ_Vsync;
    end
 	
@@ -80,7 +87,7 @@ module main(
 			if ((address >= BEGIN_MEM) && (address < BEGIN_GRAPHIC_MEM))
 				data_in = memory[address[8:0]];
 			else if ((address == ADDR_KEYBOARD))
-				data_in = keyboard_out;
+				data_in = 16'h0000;//keyboard out
 			else
 				data_in = 16'h0000;
 		end else begin
@@ -109,7 +116,7 @@ module main(
 	end
 	
 	initial begin
-		keyboard_out = 0;
+		//keyboard_out = 0;
 		$readmemh("ram.txt", memory);
 	end
 endmodule

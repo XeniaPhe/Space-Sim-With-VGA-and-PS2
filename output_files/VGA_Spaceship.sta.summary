@@ -3,132 +3,132 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk_in'
-Slack : -13.042
-TNS   : -77073.312
+Slack : -13.823
+TNS   : -74962.832
 
 Type  : Slow 1200mV 85C Model Setup 'mammal:cpu|ir[3]'
-Slack : -6.361
-TNS   : -2222.896
+Slack : -6.958
+TNS   : -2123.615
 
 Type  : Slow 1200mV 85C Model Setup 'vga_sync:vga|v_count[0]'
-Slack : -1.717
-TNS   : -1.717
+Slack : -3.412
+TNS   : -3.412
 
 Type  : Slow 1200mV 85C Model Hold 'mammal:cpu|ir[3]'
-Slack : -2.614
-TNS   : -659.551
+Slack : -4.113
+TNS   : -1257.792
 
 Type  : Slow 1200mV 85C Model Hold 'clk_in'
-Slack : -0.834
-TNS   : -3.572
+Slack : -0.857
+TNS   : -3.617
 
 Type  : Slow 1200mV 85C Model Hold 'vga_sync:vga|v_count[0]'
-Slack : 0.860
+Slack : 0.644
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'vga_sync:vga|v_count[0]'
-Slack : -4.466
-TNS   : -4.466
+Slack : -5.370
+TNS   : -5.370
 
 Type  : Slow 1200mV 85C Model Removal 'vga_sync:vga|v_count[0]'
-Slack : 0.553
+Slack : 0.253
 TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
+Slack : -3.870
+TNS   : -15369.051
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_in'
 Slack : -3.000
-TNS   : -8375.000
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
-Slack : -2.712
-TNS   : -8036.643
+TNS   : -8403.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'vga_sync:vga|v_count[0]'
 Slack : -1.000
 TNS   : -1.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk_in'
-Slack : -11.557
-TNS   : -68573.499
+Slack : -12.380
+TNS   : -66723.058
 
 Type  : Slow 1200mV 0C Model Setup 'mammal:cpu|ir[3]'
-Slack : -5.681
-TNS   : -1974.166
+Slack : -6.293
+TNS   : -1915.534
 
 Type  : Slow 1200mV 0C Model Setup 'vga_sync:vga|v_count[0]'
-Slack : -1.488
-TNS   : -1.488
+Slack : -3.099
+TNS   : -3.099
 
 Type  : Slow 1200mV 0C Model Hold 'mammal:cpu|ir[3]'
-Slack : -2.235
-TNS   : -537.750
+Slack : -3.649
+TNS   : -1112.894
 
 Type  : Slow 1200mV 0C Model Hold 'clk_in'
-Slack : -0.789
-TNS   : -3.551
+Slack : -0.782
+TNS   : -3.348
 
 Type  : Slow 1200mV 0C Model Hold 'vga_sync:vga|v_count[0]'
-Slack : 0.749
+Slack : 0.616
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'vga_sync:vga|v_count[0]'
-Slack : -3.961
-TNS   : -3.961
+Slack : -4.809
+TNS   : -4.809
 
 Type  : Slow 1200mV 0C Model Removal 'vga_sync:vga|v_count[0]'
-Slack : 0.431
+Slack : 0.175
 TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
+Slack : -3.370
+TNS   : -13675.386
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_in'
 Slack : -3.000
-TNS   : -8375.000
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
-Slack : -2.382
-TNS   : -7002.389
+TNS   : -8403.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'vga_sync:vga|v_count[0]'
 Slack : -1.000
 TNS   : -1.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk_in'
-Slack : -7.369
-TNS   : -42293.451
+Slack : -7.883
+TNS   : -41155.669
 
 Type  : Fast 1200mV 0C Model Setup 'mammal:cpu|ir[3]'
-Slack : -3.648
-TNS   : -1215.384
+Slack : -3.972
+TNS   : -1132.540
 
 Type  : Fast 1200mV 0C Model Setup 'vga_sync:vga|v_count[0]'
-Slack : -0.676
-TNS   : -0.676
+Slack : -1.597
+TNS   : -1.597
 
 Type  : Fast 1200mV 0C Model Hold 'mammal:cpu|ir[3]'
-Slack : -1.663
-TNS   : -435.617
+Slack : -2.487
+TNS   : -759.979
 
 Type  : Fast 1200mV 0C Model Hold 'clk_in'
-Slack : -0.544
-TNS   : -2.721
+Slack : -0.566
+TNS   : -2.690
 
 Type  : Fast 1200mV 0C Model Hold 'vga_sync:vga|v_count[0]'
-Slack : 0.584
+Slack : 0.500
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'vga_sync:vga|v_count[0]'
-Slack : -2.350
-TNS   : -2.350
+Slack : -2.965
+TNS   : -2.965
 
 Type  : Fast 1200mV 0C Model Removal 'vga_sync:vga|v_count[0]'
-Slack : 0.245
+Slack : 0.076
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_in'
 Slack : -3.000
-TNS   : -8921.281
+TNS   : -8873.931
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
-Slack : -1.539
-TNS   : -3688.630
+Slack : -2.338
+TNS   : -7863.383
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'vga_sync:vga|v_count[0]'
 Slack : -1.000
