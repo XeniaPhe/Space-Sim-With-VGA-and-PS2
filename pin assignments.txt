@@ -1,0 +1,14 @@
+PIN_D3 => GPIO_00 => vsync
+PIN_C3 => GPIO_01 => hsync
+PIN_A3 => GPIO_03 => red
+PIN_B4 => GPIO_05 => green
+PIN_B5 => GPIO_07 => blue
+
+GPIO0_GND => ground
+GPIO0_VCC3P3 => vcc
+PIN_D5 => GPIO_09 => ps2c
+PIN_A6 => GPIO_011 => ps2d
+
+
+
+

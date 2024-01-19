@@ -3,8 +3,7 @@ module keyboard(
                         input logic ps2d,
                         input logic ps2c,
                         input logic ack,
-                        output logic [15:0] dout
-                                );
+                        output logic [15:0] dout);
 localparam [1:0] 
                 IDLE = 2'b00,
                 READ = 2'b01,

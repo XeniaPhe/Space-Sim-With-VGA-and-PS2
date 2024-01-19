@@ -1,5 +1,5 @@
 Analysis & Synthesis report for VGA_Spaceship
-Fri Jan 19 19:45:28 2024
+Fri Jan 19 22:37:55 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Fri Jan 19 19:45:28 2024          ;
+; Analysis & Synthesis Status        ; Failed - Fri Jan 19 22:37:55 2024          ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; VGA_Spaceship                              ;
 ; Top-level Entity Name              ; main                                       ;
@@ -157,7 +157,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Fri Jan 19 19:45:28 2024
+    Info: Processing started: Fri Jan 19 22:37:55 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VGA_Spaceship -c VGA_Spaceship
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file mammal.sv
@@ -170,12 +170,31 @@ Info (12021): Found 1 design units, including 1 entities, in source file main.sv
     Info (12023): Found entity 1: main
 Info (12021): Found 1 design units, including 1 entities, in source file timer.sv
     Info (12023): Found entity 1: timer
-Error (10161): Verilog HDL error at main.sv(90): object "keyboard_out" is not declared File: C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/main.sv Line: 90
-Error (10161): Verilog HDL error at main.sv(119): object "keyboard_out" is not declared File: C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/main.sv Line: 119
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
-    Error: Peak virtual memory: 4606 megabytes
-    Error: Processing ended: Fri Jan 19 19:45:28 2024
-    Error: Elapsed time: 00:00:00
+Info (12127): Elaborating entity "main" for the top level hierarchy
+Warning (10240): Verilog HDL Always Construct warning at main.sv(87): inferring latch(es) for variable "data_in", which holds its previous value in one or more paths through the always construct
+Error (10166): SystemVerilog RTL Coding error at main.sv(87): always_comb construct does not infer purely combinational logic. File: C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/main.sv Line: 87
+Warning (10850): Verilog HDL warning at main.sv(126): number of words (336) in memory file does not match the number of elements in the address range [0:511]
+Info (10041): Inferred latch for "data_in[0]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[1]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[2]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[3]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[4]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[5]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[6]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[7]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[8]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[9]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[10]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[11]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[12]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[13]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[14]" at main.sv(95)
+Info (10041): Inferred latch for "data_in[15]" at main.sv(95)
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 3 warnings
+    Error: Peak virtual memory: 4602 megabytes
+    Error: Processing ended: Fri Jan 19 22:37:56 2024
+    Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:00
 
 

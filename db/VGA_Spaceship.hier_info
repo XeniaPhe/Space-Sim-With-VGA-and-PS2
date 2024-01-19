@@ -1,12 +1,12 @@
 |main
-clk_in => clk_in.IN3
-vsync << vga_sync:vga.vsync
-hsync << vga_sync:vga.hsync
-clk_out << clk_in.DB_MAX_OUTPUT_PORT_TYPE
-red << vga_sync:vga.rgb
-green << vga_sync:vga.rgb
-blue << vga_sync:vga.rgb
-data << <GND>
+clk => clk.IN4
+ps2c => ps2c.IN1
+ps2d => ps2d.IN1
+vsync <= vga_sync:vga.vsync
+hsync <= vga_sync:vga.hsync
+red <= vga_sync:vga.rgb
+green <= vga_sync:vga.rgb
+blue <= vga_sync:vga.rgb
 
 
 |main|mammal:cpu
@@ -554,6 +554,64 @@ rgb[2] <= rgb.DB_MAX_OUTPUT_PORT_TYPE
 hsync <= hsync.DB_MAX_OUTPUT_PORT_TYPE
 vsync <= vsync.DB_MAX_OUTPUT_PORT_TYPE
 IRQ_Vsync <= IRQ_Vsync~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|main|keyboard:ps2
+clk => status.CLK
+clk => count[0].CLK
+clk => count[1].CLK
+clk => count[2].CLK
+clk => count[3].CLK
+clk => char[1].CLK
+clk => char[2].CLK
+clk => char[3].CLK
+clk => char[4].CLK
+clk => char[5].CLK
+clk => char[6].CLK
+clk => char[7].CLK
+clk => char[8].CLK
+clk => char[9].CLK
+clk => char[10].CLK
+clk => rx_done_tick.CLK
+clk => c[0].CLK
+clk => c[1].CLK
+clk => filter[0].CLK
+clk => filter[1].CLK
+clk => filter[2].CLK
+clk => filter[3].CLK
+clk => filter[4].CLK
+clk => filter[5].CLK
+clk => filter[6].CLK
+clk => filter[7].CLK
+clk => state~4.DATAIN
+ps2d => char.DATAB
+ps2d => char.DATAB
+ps2c => filter[7].DATAIN
+ack => always2.IN1
+ack => dout.OUTPUTSELECT
+ack => dout.OUTPUTSELECT
+ack => dout.OUTPUTSELECT
+ack => dout.OUTPUTSELECT
+ack => dout.OUTPUTSELECT
+ack => dout.OUTPUTSELECT
+ack => dout.OUTPUTSELECT
+ack => dout.OUTPUTSELECT
+dout[0] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[3] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[4] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[5] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[6] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[7] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[8] <= <GND>
+dout[9] <= <GND>
+dout[10] <= <GND>
+dout[11] <= <GND>
+dout[12] <= <GND>
+dout[13] <= <GND>
+dout[14] <= <GND>
+dout[15] <= <GND>
 
 
 |main|timer:t

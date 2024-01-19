@@ -1,12 +1,12 @@
 module main(
-	input logic clk_in,
+	input logic clk,
+	input logic ps2c,
+	input logic ps2d,
 	output logic vsync,
 	output logic hsync,
-	output logic clk_out,
 	output logic red,
 	output logic green,
-	output logic blue,
-	output logic data);
+	output logic blue);
 	
  	logic [15:0] memory [0:511];
 	
@@ -22,19 +22,20 @@ module main(
 	logic IRQ_Vsync;
 	logic graphic_wren;
 	
-	//logic [15:0] keyboard_out;
+	logic [15:0] keyboard_out;
+	logic keyboard_ack;
 	
 	logic IRQ_second_elapsed;
 	
-	assign clk_out = clk_in;
 	assign INT = IRQ0 | IRQ1 | IRQ2 | IRQ3 | IRQ4 | IRQ5 | IRQ6 | IRQ7;
 	
 	localparam 	BEGIN_MEM = 12'h000,
 					BEGIN_GRAPHIC_MEM = 12'h200,
-					ADDR_KEYBOARD = 12'h224;
+					ADDR_KEYBOARD_OUT = 12'h224,
+					ADDR_KEYBOARD_ACK = 12'h225;
 				  
 	mammal cpu(
-	.clk(clk_in),
+	.clk(clk),
 	.data_in(data_in),
 	.data_out(data_out),
 	.address(address),
@@ -43,7 +44,7 @@ module main(
 	.intack(INTACK));
 	
 	vga_sync vga(
-	.clk_50_mhz(clk_in),
+	.clk_50_mhz(clk),
 	.wren(graphic_wren),
 	.ldr(data_out),
 	.addr(address[5:0]),
@@ -52,15 +53,15 @@ module main(
 	.vsync(vsync),
 	.IRQ_Vsync(IRQ_Vsync));
 	
-	//keyboard ps2(
-	//.clk(clk_in),
-	//.ps2d(?),
-	//.ps2c(?),
-	//.ack(?),
-	//.dout(keyboard_out));
+	keyboard ps2(
+	.clk(clk),
+	.ps2d(ps2d),
+	.ps2c(ps2c),
+	.ack(keyboard_ack),
+	.dout(keyboard_out));
 	
 	timer t(
-	.clk_50_mhz(clk_in),
+	.clk_50_mhz(clk),
 	.ack(INTACK),
 	.IRQ_second_elapsed(IRQ_second_elapsed));
 	
@@ -76,7 +77,7 @@ module main(
    end
 	
 	always_comb begin
-		if (memwt && (address >= BEGIN_GRAPHIC_MEM) && (address < ADDR_KEYBOARD))
+		if (memwt && (address >= BEGIN_GRAPHIC_MEM) && (address < ADDR_KEYBOARD_OUT))
 			graphic_wren = 1;
 		else
 			graphic_wren = 0;
@@ -86,10 +87,10 @@ module main(
 		if(INTACK == 0) begin
 			if ((address >= BEGIN_MEM) && (address < BEGIN_GRAPHIC_MEM))
 				data_in = memory[address[8:0]];
-			else if ((address == ADDR_KEYBOARD))
-				data_in = 16'h0000;//keyboard out
-			else
-				data_in = 16'h0000;
+			else if (address == ADDR_KEYBOARD_OUT)
+				data_in = keyboard_out;
+			else if (address == ADDR_KEYBOARD_ACK)
+				data_in = {15'h0000, keyboard_ack};
 		end else begin
 			if (IRQ0)
 				data_in = 16'h0;
@@ -110,13 +111,18 @@ module main(
 		end
 	end
 	
-	always_ff @(posedge clk_in) begin
-		if(memwt && (address >= BEGIN_MEM) && (address < BEGIN_GRAPHIC_MEM))
-			memory[address[8:0]] <= data_out;
+	always_ff @(posedge clk) begin
+		if(memwt) begin
+			if((address >= BEGIN_MEM) && (address < BEGIN_GRAPHIC_MEM))
+				memory[address[8:0]] <= data_out;
+			else if(address == ADDR_KEYBOARD_ACK)
+				keyboard_ack <= data_out[0];
+		end
 	end
 	
 	initial begin
-		//keyboard_out = 0;
+		keyboard_out = 16'h0000;
+		keyboard_ack = 0;
 		$readmemh("ram.txt", memory);
 	end
 endmodule

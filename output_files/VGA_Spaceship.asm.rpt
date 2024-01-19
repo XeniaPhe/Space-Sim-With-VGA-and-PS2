@@ -1,5 +1,5 @@
 Assembler report for VGA_Spaceship
-Fri Jan 19 19:27:26 2024
+Fri Jan 19 21:14:03 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri Jan 19 19:27:26 2024 ;
+; Assembler Status      ; Successful - Fri Jan 19 21:14:03 2024 ;
 ; Revision Name         ; VGA_Spaceship                         ;
 ; Top-level Entity Name ; main                                  ;
 ; Family                ; Cyclone IV E                          ;
@@ -92,8 +92,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                                                                                        ;
 +----------------+--------------------------------------------------------------------------------------------------------------------------------+
 ; Device         ; EP4CE22F17C6                                                                                                                   ;
-; JTAG usercode  ; 0x009DE812                                                                                                                     ;
-; Checksum       ; 0x009DE812                                                                                                                     ;
+; JTAG usercode  ; 0x009D12F8                                                                                                                     ;
+; Checksum       ; 0x009D12F8                                                                                                                     ;
 +----------------+--------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -103,14 +103,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Fri Jan 19 19:27:25 2024
+    Info: Processing started: Fri Jan 19 21:14:02 2024
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off VGA_Spaceship -c VGA_Spaceship
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 4631 megabytes
-    Info: Processing ended: Fri Jan 19 19:27:26 2024
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Processing ended: Fri Jan 19 21:14:04 2024
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:00
 
 
