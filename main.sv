@@ -17,6 +17,7 @@ module main(
 	logic INT;
 	logic INTACK;
 	
+	
 	logic IRQ0, IRQ1, IRQ2, IRQ3, IRQ4, IRQ5, IRQ6, IRQ7;
 	
 	logic IRQ_Vsync;
@@ -33,7 +34,7 @@ module main(
 					BEGIN_GRAPHIC_MEM = 12'h200,
 					ADDR_KEYBOARD_OUT = 12'h224,
 					ADDR_KEYBOARD_ACK = 12'h225;
-				  
+	
 	mammal cpu(
 	.clk(clk),
 	.data_in(data_in),
@@ -65,6 +66,7 @@ module main(
 	.ack(INTACK),
 	.IRQ_second_elapsed(IRQ_second_elapsed));
 	
+	
 	always_comb begin
       IRQ0 = 1'b0;
       IRQ1 = 1'b0;
@@ -91,6 +93,8 @@ module main(
 				data_in = keyboard_out;
 			else if (address == ADDR_KEYBOARD_ACK)
 				data_in = {15'h0000, keyboard_ack};
+			else
+				data_in = 16'h0;
 		end else begin
 			if (IRQ0)
 				data_in = 16'h0;
@@ -125,4 +129,5 @@ module main(
 		keyboard_ack = 0;
 		$readmemh("ram.txt", memory);
 	end
+	
 endmodule

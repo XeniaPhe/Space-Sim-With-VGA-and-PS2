@@ -3,132 +3,168 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -12.340
-TNS   : -72620.738
+Slack : -12.816
+TNS   : -72401.665
 
 Type  : Slow 1200mV 85C Model Setup 'mammal:cpu|ir[3]'
-Slack : -5.636
-TNS   : -2135.827
+Slack : -6.120
+TNS   : -2161.652
 
 Type  : Slow 1200mV 85C Model Setup 'vga_sync:vga|v_count[0]'
-Slack : -2.069
-TNS   : -2.069
+Slack : -1.868
+TNS   : -1.868
+
+Type  : Slow 1200mV 85C Model Setup 'vga_sync:vga|pixel_tick'
+Slack : -1.714
+TNS   : -23.217
 
 Type  : Slow 1200mV 85C Model Hold 'mammal:cpu|ir[3]'
-Slack : -2.522
-TNS   : -492.781
+Slack : -2.257
+TNS   : -543.923
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : -1.068
-TNS   : -5.059
+Slack : -0.096
+TNS   : -0.096
+
+Type  : Slow 1200mV 85C Model Hold 'vga_sync:vga|pixel_tick'
+Slack : -0.092
+TNS   : -0.092
 
 Type  : Slow 1200mV 85C Model Hold 'vga_sync:vga|v_count[0]'
-Slack : 1.052
+Slack : 1.004
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'vga_sync:vga|v_count[0]'
-Slack : -4.915
-TNS   : -4.915
+Slack : -4.668
+TNS   : -4.668
 
 Type  : Slow 1200mV 85C Model Removal 'vga_sync:vga|v_count[0]'
-Slack : 0.527
+Slack : 0.777
 TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
+Slack : -3.202
+TNS   : -10022.488
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -8403.000
+TNS   : -8413.000
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
-Slack : -2.851
-TNS   : -8209.727
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'vga_sync:vga|pixel_tick'
+Slack : -1.000
+TNS   : -20.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'vga_sync:vga|v_count[0]'
 Slack : -1.000
 TNS   : -1.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -10.980
-TNS   : -64981.453
+Slack : -11.490
+TNS   : -64632.157
 
 Type  : Slow 1200mV 0C Model Setup 'mammal:cpu|ir[3]'
-Slack : -5.005
-TNS   : -1895.112
+Slack : -5.473
+TNS   : -1914.337
 
 Type  : Slow 1200mV 0C Model Setup 'vga_sync:vga|v_count[0]'
-Slack : -1.824
-TNS   : -1.824
+Slack : -1.610
+TNS   : -1.610
+
+Type  : Slow 1200mV 0C Model Setup 'vga_sync:vga|pixel_tick'
+Slack : -1.435
+TNS   : -18.665
 
 Type  : Slow 1200mV 0C Model Hold 'mammal:cpu|ir[3]'
-Slack : -2.287
-TNS   : -421.376
+Slack : -1.886
+TNS   : -423.804
+
+Type  : Slow 1200mV 0C Model Hold 'vga_sync:vga|pixel_tick'
+Slack : -0.107
+TNS   : -0.136
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : -0.982
-TNS   : -4.855
+Slack : -0.103
+TNS   : -0.103
 
 Type  : Slow 1200mV 0C Model Hold 'vga_sync:vga|v_count[0]'
-Slack : 0.954
+Slack : 0.833
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'vga_sync:vga|v_count[0]'
-Slack : -4.341
-TNS   : -4.341
+Slack : -4.112
+TNS   : -4.112
 
 Type  : Slow 1200mV 0C Model Removal 'vga_sync:vga|v_count[0]'
-Slack : 0.421
+Slack : 0.678
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -8403.000
+TNS   : -8413.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
-Slack : -2.438
-TNS   : -7182.306
+Slack : -2.711
+TNS   : -8735.507
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'vga_sync:vga|pixel_tick'
+Slack : -1.000
+TNS   : -20.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'vga_sync:vga|v_count[0]'
 Slack : -1.000
 TNS   : -1.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -6.787
-TNS   : -39747.097
+Slack : -7.138
+TNS   : -39862.195
 
 Type  : Fast 1200mV 0C Model Setup 'mammal:cpu|ir[3]'
-Slack : -3.151
-TNS   : -1127.811
+Slack : -3.551
+TNS   : -1137.759
 
 Type  : Fast 1200mV 0C Model Setup 'vga_sync:vga|v_count[0]'
-Slack : -0.842
-TNS   : -0.842
+Slack : -0.687
+TNS   : -0.687
+
+Type  : Fast 1200mV 0C Model Setup 'vga_sync:vga|pixel_tick'
+Slack : -0.523
+TNS   : -4.976
 
 Type  : Fast 1200mV 0C Model Hold 'mammal:cpu|ir[3]'
-Slack : -1.476
-TNS   : -331.598
+Slack : -1.405
+TNS   : -336.509
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : -0.718
-TNS   : -3.932
+Slack : -0.104
+TNS   : -0.104
+
+Type  : Fast 1200mV 0C Model Hold 'vga_sync:vga|pixel_tick'
+Slack : -0.045
+TNS   : -0.045
 
 Type  : Fast 1200mV 0C Model Hold 'vga_sync:vga|v_count[0]'
-Slack : 0.706
+Slack : 0.547
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'vga_sync:vga|v_count[0]'
-Slack : -2.673
-TNS   : -2.673
+Slack : -2.456
+TNS   : -2.456
 
 Type  : Fast 1200mV 0C Model Removal 'vga_sync:vga|v_count[0]'
-Slack : 0.210
+Slack : 0.397
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -8884.267
+TNS   : -8900.329
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'mammal:cpu|ir[3]'
-Slack : -1.636
-TNS   : -3707.411
+Slack : -1.815
+TNS   : -4415.438
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'vga_sync:vga|pixel_tick'
+Slack : -1.000
+TNS   : -20.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'vga_sync:vga|v_count[0]'
 Slack : -1.000

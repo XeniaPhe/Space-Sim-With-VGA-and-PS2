@@ -11,166 +11,26 @@
     spaceship_y: 0x00F0
     planet_x: 0x0140
     planet_y: 0x00F0
+    initialized: 0x0000
 .code
 
 MAIN
-    ldi 7 0x01ff
-    ldi 1 0x07f7
-    st 1 ISR_Vsync
+    ldi 7 0x01FF
+    ldi 1 0x07F7
+    st 1 ISR_Vsync_init
     dec 1
     st 1 ISR_second_elapsed
 
-    ldi 0 addr_spaceship_bitmap
-    ld 0 0
-    ldi 1 addr_planet_bitmap
-    ld 1 1
-
-    ldi 3 0x0080
-    st 0 3
-    ldi 3 0x07E0
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0x1FF8
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0x3FFC
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0x7FFE
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0x7FFE
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x03E0
-    st 0 3
-    ldi 3 0xFFFF
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x07F0
-    st 0 3
-    ldi 3 0xFFFF
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x0FF8
-    st 0 3
-    ldi 3 0xFFFF
-    st 1 3
-    
-    inc 0
-    inc 1
-
-    ldi 3 0x3FFE
-    st 0 3
-    ldi 3 0xFFFF
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0xFFFF
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0xFFFF
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0x7FFE
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0x7FFE
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x03E0
-    st 0 3
-    ldi 3 0x3FFC
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x07F0
-    st 0 3
-    ldi 3 0x1FF8
-    st 1 3
-
-    inc 0
-    inc 1
-
-    ldi 3 0x01C0
-    st 0 3
-    ldi 3 0x07E0
-    st 1 3
-
-    ldi 0 addr_spaceship_x
-    ld 0 0
-    ldi 1 0x0140
-    st 0 1
-
-    ldi 0 addr_spaceship_y
-    ld 0 0
-    ldi 1 0x00F0
-    st 0 1
-
-    ldi 0 addr_planet_x
-    ld 0 0
-    ldi 1 0x0140
-    st 0 1
-
-    ldi 0 addr_planet_y
-    ld 0 0
-    ldi 1 0x00F0
-    st 0 1
-
     sti
+    ldi 0 initialized
+
+init_graphics
+    ld 1 0
+    mov 1 1
+    jz init_graphics
+
+    ldi 1 0x07F7
+    st 1 ISR_Vsync
 
 game_loop
     call PROC_read_keyboard
@@ -345,12 +205,178 @@ PROC_render
 RET_render
 ret
 
+ISR_Vsync_init
+    push 0
+    push 1
+    push 3
+    
+    ldi 0 addr_spaceship_bitmap
+    ld 0 0
+    ldi 1 addr_planet_bitmap
+    ld 1 1
+
+    ldi 3 0x0080
+    st 0 3
+    ldi 3 0x07E0
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0x1FF8
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0x3FFC
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0x7FFE
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0x7FFE
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x03E0
+    st 0 3
+    ldi 3 0xFFFF
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x07F0
+    st 0 3
+    ldi 3 0xFFFF
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x0FF8
+    st 0 3
+    ldi 3 0xFFFF
+    st 1 3
+    
+    inc 0
+    inc 1
+
+    ldi 3 0x3FFE
+    st 0 3
+    ldi 3 0xFFFF
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0xFFFF
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0xFFFF
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0x7FFE
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0x7FFE
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x03E0
+    st 0 3
+    ldi 3 0x3FFC
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x07F0
+    st 0 3
+    ldi 3 0x1FF8
+    st 1 3
+
+    inc 0
+    inc 1
+
+    ldi 3 0x01C0
+    st 0 3
+    ldi 3 0x07E0
+    st 1 3
+
+    ldi 0 addr_spaceship_x
+    ld 0 0
+    ldi 1 0x0140
+    st 0 1
+
+    ldi 0 addr_spaceship_y
+    ld 0 0
+    ldi 1 0x00F0
+    st 0 1
+
+    ldi 0 addr_planet_x
+    ld 0 0
+    ldi 1 0x0140
+    st 0 1
+
+    ldi 0 addr_planet_y
+    ld 0 0
+    ldi 1 0x00F0
+    st 0 1
+
+    ldi 0 initialized
+    ldi 1 0x0001
+    st 0 1
+
+    pop 3
+    pop 1
+    pop 0
+RET_ISR_Vsync_init
+sti
+iret
+
 ISR_Vsync
     push 0
     push 1
 
     call PROC_render
-    
+
     pop 1
     pop 0
 RET_ISR_Vsync

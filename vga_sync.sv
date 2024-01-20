@@ -41,23 +41,17 @@ module vga_sync(
    always_ff @(posedge clk_50_mhz)
      pixel_tick <= ~pixel_tick; //25 MHZ signal
 
-   always_ff @(posedge clk_50_mhz)
-	begin
-		if (pixel_tick)
-		begin
-			if (h_count == LINE_END)
-			begin
+   always_ff @(posedge pixel_tick) begin
+			if (h_count == LINE_END) begin
 				h_count <= 0;
-				
-            if (v_count == PAGE_END)
+				if (v_count == PAGE_END)
 					v_count <= 0;
-            else
+				else
 					v_count <= v_count + 1;
-			end else
-			begin
+
+			end else begin
 				h_count <= h_count + 1;
 			end
-		end
 	end
 	
 	always_ff @(posedge wren, posedge vsync)
@@ -98,11 +92,11 @@ module vga_sync(
 		
 			if ((h_count >= spaceship_x) && (h_count < (spaceship_x + SPRITE_SIZE))
 			&& (v_count >= spaceship_y) && (v_count < spaceship_y + SPRITE_SIZE)
-			&& (spaceship_bitmap[v_count - spaceship_y][spaceship_x + SPRITE_SIZE - h_count] == 1)) begin
+			&& (spaceship_bitmap[v_count - spaceship_y][h_count - spaceship_x] == 1)) begin
 				rgb = 3'b100;	//spaceship
 			end else if ((h_count >= planet_x) && (h_count < (planet_x + SPRITE_SIZE))
 			&& (v_count >= planet_y) && (v_count < planet_y + SPRITE_SIZE)
-			&& (planet_bitmap[v_count - planet_y][planet_x + SPRITE_SIZE - h_count] == 1)) begin
+			&& (planet_bitmap[v_count - planet_y][h_count - planet_x] == 1)) begin
 				rgb = 3'b001;	//planet
 			end else begin
 				rgb = 3'b010;	//background
@@ -111,7 +105,7 @@ module vga_sync(
 				rgb = 3'b000;
 		end
 	end
-
+	
    assign hsync = (h_count >= (HD+HB) && h_count <= (HFB+HD+HB-1));
    assign vsync = (v_count >= (VD+VB) && v_count <= (VD+VB+VFB-1));
 
