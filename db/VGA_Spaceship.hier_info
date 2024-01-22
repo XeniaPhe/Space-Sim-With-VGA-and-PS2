@@ -1,5 +1,5 @@
 |main
-clk => clk.IN5
+clk => clk.IN4
 ps2c => ps2c.IN1
 ps2d => ps2d.IN1
 vsync <= vga_sync:vga.vsync
@@ -7,17 +7,6 @@ hsync <= vga_sync:vga.hsync
 red <= vga_sync:vga.rgb
 green <= vga_sync:vga.rgb
 blue <= vga_sync:vga.rgb
-gnds[0] <= debugger:d.gnds
-gnds[1] <= debugger:d.gnds
-gnds[2] <= debugger:d.gnds
-gnds[3] <= debugger:d.gnds
-display[0] <= debugger:d.display
-display[1] <= debugger:d.display
-display[2] <= debugger:d.display
-display[3] <= debugger:d.display
-display[4] <= debugger:d.display
-display[5] <= debugger:d.display
-display[6] <= debugger:d.display
 
 
 |main|mammal:cpu
@@ -632,37 +621,5 @@ clk_50Mhz => counter[21].CLK
 clk_50Mhz => counter[22].CLK
 ack => IRQ_timer_100ms.OUTPUTSELECT
 IRQ_timer_100ms <= IRQ_timer_100ms~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|main|debugger:d
-clk => data[0].CLK
-clk => data[1].CLK
-clk => data[2].CLK
-clk => data[3].CLK
-clk => current_segment[0].CLK
-clk => current_segment[1].CLK
-clk => gnds[0]~reg0.CLK
-clk => gnds[1]~reg0.CLK
-clk => gnds[2]~reg0.CLK
-clk => gnds[3]~reg0.CLK
-en => data[0].ENA
-en => data[1].ENA
-en => data[2].ENA
-en => data[3].ENA
-ldr[0] => data[0].DATAIN
-ldr[1] => data[1].DATAIN
-ldr[2] => data[2].DATAIN
-ldr[3] => data[3].DATAIN
-gnds[0] <= gnds[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-gnds[1] <= gnds[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-gnds[2] <= gnds[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-gnds[3] <= gnds[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-display[0] <= <GND>
-display[1] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-display[2] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-display[3] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-display[4] <= <VCC>
-display[5] <= <VCC>
-display[6] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
 
 

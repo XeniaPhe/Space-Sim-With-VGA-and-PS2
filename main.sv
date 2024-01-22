@@ -6,9 +6,7 @@ module main(
 	output logic hsync,
 	output logic red,
 	output logic green,
-	output logic blue,
-	output logic [3:0] gnds,
-	output logic [6:0] display);
+	output logic blue);
 	
  	logic [15:0] memory [0:511];
 	
@@ -29,15 +27,12 @@ module main(
 	
 	logic IRQ_timer_100ms;
 	
-	logic debugger_wren;
-	
 	assign INT = IRQ0 | IRQ1 | IRQ2 | IRQ3 | IRQ4 | IRQ5 | IRQ6 | IRQ7;
 	
 	localparam 	BEGIN_MEM = 12'h000,
 					BEGIN_GRAPHIC_MEM = 12'h200,
 					ADDR_KEYBOARD_OUT = 12'h224,
-					ADDR_KEYBOARD_ACK = 12'h225,
-					ADDR_DEBUGGER = 12'h226;
+					ADDR_KEYBOARD_ACK = 12'h225;
 	
 	mammal cpu(
 	.clk(clk),
@@ -70,22 +65,15 @@ module main(
 	.ack(INTACK),
 	.IRQ_timer_100ms(IRQ_timer_100ms));
 	
-	debugger d(
-	.clk(clk),
-	.en(debugger_wren),
-	.ldr(data_out[3:0]),
-	.gnds(gnds),
-	.display(display));
-	
 	always_comb begin
-      IRQ0 = 1'b0;
-      IRQ1 = 1'b0;
+      IRQ0 = IRQ_Vsync;
+      IRQ1 = IRQ_timer_100ms;
       IRQ2 = 1'b0;
       IRQ3 = 1'b0;
       IRQ4 = 1'b0;
       IRQ5 = 1'b0;
-      IRQ6 = IRQ_timer_100ms;
-      IRQ7 = IRQ_Vsync;
+      IRQ6 = 1'b0;
+      IRQ7 = 1'b0;
    end
 	
 	always_comb begin
@@ -93,11 +81,6 @@ module main(
 			graphic_wren = 1;
 		else
 			graphic_wren = 0;
-			
-		if (memwt && (address == ADDR_DEBUGGER))
-			debugger_wren = 1;
-		else
-			debugger_wren = 0;
 	end
 	
 	always_comb begin
