@@ -1,5 +1,5 @@
 Analysis & Synthesis report for VGA_Spaceship
-Sat Jan 20 05:07:04 2024
+Mon Jan 22 06:47:36 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -17,9 +17,10 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   9. User-Specified and Inferred Latches
  10. Registers Removed During Synthesis
  11. General Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Elapsed Time Per Partition
- 14. Analysis & Synthesis Messages
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -45,16 +46,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jan 20 05:07:04 2024      ;
+; Analysis & Synthesis Status        ; Successful - Mon Jan 22 06:47:36 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; VGA_Spaceship                              ;
 ; Top-level Entity Name              ; main                                       ;
 ; Family                             ; Cyclone IV E                               ;
 ; Total logic elements               ; 16,009                                     ;
-;     Total combinational functions  ; 9,249                                      ;
-;     Dedicated logic registers      ; 8,431                                      ;
-; Total registers                    ; 8431                                       ;
-; Total pins                         ; 8                                          ;
+;     Total combinational functions  ; 8,968                                      ;
+;     Dedicated logic registers      ; 8,438                                      ;
+; Total registers                    ; 8438                                       ;
+; Total pins                         ; 19                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -170,6 +171,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; vga_sync.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/vga_sync.sv ;         ;
 ; main.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/main.sv     ;         ;
 ; timer.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/timer.sv    ;         ;
+; debugger.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/debugger.sv ;         ;
 ; ram.txt                          ; yes             ; Auto-Found File              ; C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/ram.txt     ;         ;
 +----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------+---------+
 
@@ -181,26 +183,26 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Estimated Total logic elements              ; 16,009    ;
 ;                                             ;           ;
-; Total combinational functions               ; 9249      ;
+; Total combinational functions               ; 8968      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 6202      ;
-;     -- 3 input functions                    ; 1377      ;
-;     -- <=2 input functions                  ; 1670      ;
+;     -- 4 input functions                    ; 6229      ;
+;     -- 3 input functions                    ; 1359      ;
+;     -- <=2 input functions                  ; 1380      ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 9035      ;
-;     -- arithmetic mode                      ; 214       ;
+;     -- normal mode                          ; 8757      ;
+;     -- arithmetic mode                      ; 211       ;
 ;                                             ;           ;
-; Total registers                             ; 8431      ;
-;     -- Dedicated logic registers            ; 8431      ;
+; Total registers                             ; 8438      ;
+;     -- Dedicated logic registers            ; 8438      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 8         ;
+; I/O pins                                    ; 19        ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 8410      ;
-; Total fan-out                               ; 56035     ;
-; Average fan-out                             ; 3.17      ;
+; Maximum fan-out                             ; 8417      ;
+; Total fan-out                               ; 55818     ;
+; Average fan-out                             ; 3.20      ;
 +---------------------------------------------+-----------+
 
 
@@ -209,10 +211,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |main                      ; 9249 (7576)       ; 8431 (8193)  ; 0           ; 0            ; 0       ; 0         ; 8    ; 0            ; |main               ; work         ;
+; |main                      ; 8968 (7306)       ; 8438 (8193)  ; 0           ; 0            ; 0       ; 0         ; 19   ; 0            ; |main               ; work         ;
+;    |debugger:d|            ; 6 (6)             ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|debugger:d    ; work         ;
 ;    |keyboard:ps2|          ; 21 (21)           ; 29 (29)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|keyboard:ps2  ; work         ;
-;    |mammal:cpu|            ; 503 (503)         ; 160 (160)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|mammal:cpu    ; work         ;
-;    |timer:t|               ; 49 (49)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|timer:t       ; work         ;
+;    |mammal:cpu|            ; 494 (494)         ; 160 (160)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|mammal:cpu    ; work         ;
+;    |timer:t|               ; 41 (41)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|timer:t       ; work         ;
 ;    |vga_sync:vga|          ; 1100 (1100)       ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|vga_sync:vga  ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -345,9 +348,9 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 +----------------------------------------+----------------------------------------+
 ; Register name                          ; Reason for Removal                     ;
 +----------------------------------------+----------------------------------------+
-; mammal:cpu|interruptreg[4,5,9,10]      ; Stuck at VCC due to stuck port data_in ;
-; mammal:cpu|interruptreg[3,11]          ; Stuck at GND due to stuck port data_in ;
-; mammal:cpu|interruptreg[1,2,6..8]      ; Stuck at VCC due to stuck port data_in ;
+; mammal:cpu|interruptreg[4,5]           ; Stuck at VCC due to stuck port data_in ;
+; mammal:cpu|interruptreg[9..11]         ; Stuck at GND due to stuck port data_in ;
+; mammal:cpu|interruptreg[1..3,6..8]     ; Stuck at VCC due to stuck port data_in ;
 ; Total Number of Removed Registers = 11 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
@@ -357,14 +360,26 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 8431  ;
+; Total registers                              ; 8438  ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 30    ;
 ; Number of registers using Asynchronous Clear ; 1     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 8366  ;
+; Number of registers using Clock Enable       ; 8370  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; debugger:d|gnds[1]                     ; 2       ;
+; debugger:d|gnds[2]                     ; 2       ;
+; debugger:d|gnds[3]                     ; 2       ;
+; Total number of inverted registers = 3 ;         ;
++----------------------------------------+---------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------+
@@ -372,32 +387,32 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
-; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |main|keyboard:ps2|char[10]     ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |main|keyboard:ps2|char[6]      ;
 ; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |main|keyboard:ps2|count[3]     ;
 ; 33:1               ; 2 bits    ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |main|mammal:cpu|state[3]       ;
 ; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[6][7]  ;
-; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[5][13] ;
-; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[4][15] ;
-; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[3][6]  ;
-; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[2][3]  ;
-; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[1][3]  ;
-; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[0][3]  ;
-; 14:1               ; 12 bits   ; 108 LEs       ; 24 LEs               ; 84 LEs                 ; Yes        ; |main|mammal:cpu|pc[1]          ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; Yes        ; |main|mammal:cpu|regbank[7][13] ;
-; 16:1               ; 12 bits   ; 120 LEs       ; 24 LEs               ; 96 LEs                 ; Yes        ; |main|mammal:cpu|regbank[7][1]  ;
+; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[5][15] ;
+; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[4][6]  ;
+; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[3][9]  ;
+; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[2][10] ;
+; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[1][10] ;
+; 32:1               ; 16 bits   ; 336 LEs       ; 16 LEs               ; 320 LEs                ; Yes        ; |main|mammal:cpu|regbank[0][11] ;
+; 14:1               ; 12 bits   ; 108 LEs       ; 24 LEs               ; 84 LEs                 ; Yes        ; |main|mammal:cpu|pc[4]          ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; Yes        ; |main|mammal:cpu|regbank[7][12] ;
+; 16:1               ; 12 bits   ; 120 LEs       ; 24 LEs               ; 96 LEs                 ; Yes        ; |main|mammal:cpu|regbank[7][4]  ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|vga_sync:vga|rgb[1]       ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |main|keyboard:ps2|state        ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |main|data_in[11]               ;
-; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |main|mammal:cpu|Mux38          ;
-; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |main|mammal:cpu|Mux52          ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; No         ; |main|data_in[7]                ;
-; 18:1               ; 11 bits   ; 132 LEs       ; 22 LEs               ; 110 LEs                ; No         ; |main|mammal:cpu|Selector142    ;
-; 12:1               ; 15 bits   ; 120 LEs       ; 60 LEs               ; 60 LEs                 ; No         ; |main|mammal:cpu|Mux79          ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |main|mammal:cpu|Add5           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |main|data_in[14]               ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |main|mammal:cpu|Mux39          ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |main|mammal:cpu|Mux49          ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; No         ; |main|data_in[2]                ;
+; 18:1               ; 11 bits   ; 132 LEs       ; 22 LEs               ; 110 LEs                ; No         ; |main|mammal:cpu|Selector146    ;
+; 12:1               ; 15 bits   ; 120 LEs       ; 60 LEs               ; 60 LEs                 ; No         ; |main|mammal:cpu|Mux80          ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |main|mammal:cpu|Add5           ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |main|mammal:cpu|Add5           ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |main|mammal:cpu|Add5           ;
-; 11:1               ; 12 bits   ; 84 LEs        ; 24 LEs               ; 60 LEs                 ; No         ; |main|mammal:cpu|Selector134    ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |main|mammal:cpu|Add5           ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; No         ; |main|mammal:cpu|Add5           ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |main|mammal:cpu|Add5           ;
+; 11:1               ; 12 bits   ; 84 LEs        ; 24 LEs               ; 60 LEs                 ; No         ; |main|mammal:cpu|Selector131    ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 0 LEs                ; 8 LEs                  ; No         ; |main|mammal:cpu|Add4           ;
 ; 5:1                ; 12 bits   ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; No         ; |main|mammal:cpu|Add4           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
@@ -418,7 +433,7 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Sat Jan 20 05:06:43 2024
+    Info: Processing started: Mon Jan 22 06:47:15 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VGA_Spaceship -c VGA_Spaceship
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file mammal.sv
@@ -431,8 +446,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file main.sv
     Info (12023): Found entity 1: main
 Info (12021): Found 1 design units, including 1 entities, in source file timer.sv
     Info (12023): Found entity 1: timer
+Info (12021): Found 1 design units, including 1 entities, in source file debugger.sv
+    Info (12023): Found entity 1: debugger
 Info (12127): Elaborating entity "main" for the top level hierarchy
-Warning (10850): Verilog HDL warning at main.sv(130): number of words (358) in memory file does not match the number of elements in the address range [0:511]
+Warning (10850): Verilog HDL warning at main.sv(144): number of words (289) in memory file does not match the number of elements in the address range [0:511]
 Info (12128): Elaborating entity "mammal" for hierarchy "mammal:cpu"
 Warning (10230): Verilog HDL assignment warning at mammal.sv(55): truncated value with size 32 to match size of target (12)
 Warning (10230): Verilog HDL assignment warning at mammal.sv(61): truncated value with size 32 to match size of target (12)
@@ -497,7 +514,24 @@ Info (10041): Inferred latch for "spaceship_x[9]" at vga_sync.sv(57)
 Info (12128): Elaborating entity "keyboard" for hierarchy "keyboard:ps2"
 Warning (10230): Verilog HDL assignment warning at keyboard.sv(53): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "timer" for hierarchy "timer:t"
-Warning (10230): Verilog HDL assignment warning at timer.sv(11): truncated value with size 32 to match size of target (26)
+Warning (10230): Verilog HDL assignment warning at timer.sv(11): truncated value with size 32 to match size of target (23)
+Info (12128): Elaborating entity "debugger" for hierarchy "debugger:d"
+Warning (10027): Verilog HDL or VHDL warning at the debugger.sv(13): index expression is not wide enough to address all of the elements in the array
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(16): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(17): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(18): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(19): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(20): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(21): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(22): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(23): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(24): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(25): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(26): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(27): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(28): case item expression never matches the case expression
+Warning (10199): Verilog HDL Case Statement warning at debugger.sv(29): case item expression never matches the case expression
+Warning (10230): Verilog HDL assignment warning at debugger.sv(36): truncated value with size 32 to match size of target (2)
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276007): RAM logic "memory" is uninferred due to asynchronous read logic
 Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/mtuna/Desktop/Programming Stuff/WorkSpaces/Quartus II WorkSpace/VGA_Spaceship/db/VGA_Spaceship.ram0_main_3dde57.hdl.mif" contains "don't care" values -- overwriting them with 0s
@@ -1607,17 +1641,21 @@ Warning (13012): Latch vga_sync:vga|planet_bitmap~255 has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal mammal:cpu|state[4]
 Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
     Warning (13310): Register "vga_sync:vga|IRQ_Vsync" is converted into an equivalent circuit using register "vga_sync:vga|IRQ_Vsync~_emulated" and latch "vga_sync:vga|IRQ_Vsync~1"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "display[0]" is stuck at GND
+    Warning (13410): Pin "display[4]" is stuck at VCC
+    Warning (13410): Pin "display[5]" is stuck at VCC
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 16061 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 16072 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 5 output pins
+    Info (21059): Implemented 16 output pins
     Info (21061): Implemented 16053 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1130 warnings
-    Info: Peak virtual memory: 4708 megabytes
-    Info: Processing ended: Sat Jan 20 05:07:04 2024
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1150 warnings
+    Info: Peak virtual memory: 4698 megabytes
+    Info: Processing ended: Mon Jan 22 06:47:36 2024
     Info: Elapsed time: 00:00:21
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Total CPU time (on all processors): 00:00:10
 
 

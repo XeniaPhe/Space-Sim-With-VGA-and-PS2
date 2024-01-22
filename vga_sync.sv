@@ -1,5 +1,5 @@
 module vga_sync(
-	input logic clk_50_mhz,
+	input logic clk_50Mhz,
 	input logic wren,
 	input logic [15:0] ldr,
 	input logic [5:0] addr,
@@ -38,7 +38,7 @@ module vga_sync(
 					ADDR_PLANET_X = 6'h22,
 					ADDR_PLANET_Y = 6'h23;
 
-   always_ff @(posedge clk_50_mhz)
+   always_ff @(posedge clk_50Mhz)
      pixel_tick <= ~pixel_tick; //25 MHZ signal
 
    always_ff @(posedge pixel_tick) begin

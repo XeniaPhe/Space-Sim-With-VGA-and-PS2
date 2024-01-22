@@ -160,7 +160,7 @@ end
 INT2:
 begin
 regbank[7]<=regbank[7]-1;
-interruptreg <= 12'(data_in+16'h07f0);
+interruptreg <= 12'(data_in+16'h01f8);
 state <= INT3;
 end
 
@@ -253,7 +253,7 @@ end
 always_comb //ALU Operation
 case (ir[11:9])
 3'h0: result = regbank[ir[8:6]]+regbank[ir[5:3]]; //000
-3'h1: result = regbank[ir[8:6]]-regbank[ir[5:3]]; //001
+3'h1: result = regbank[ir[5:3]]-regbank[ir[8:6]]; //001
 3'h2: result = regbank[ir[8:6]]&regbank[ir[5:3]]; //010
 3'h3: result = regbank[ir[8:6]]|regbank[ir[5:3]]; //011
 3'h4: result = regbank[ir[8:6]]^regbank[ir[5:3]]; //100

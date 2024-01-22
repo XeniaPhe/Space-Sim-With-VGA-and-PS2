@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sat Jan 20 05:07:04 2024
+Analysis & Synthesis Status : Successful - Mon Jan 22 06:47:36 2024
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : VGA_Spaceship
 Top-level Entity Name : main
 Family : Cyclone IV E
 Total logic elements : 16,009
-    Total combinational functions : 9,249
-    Dedicated logic registers : 8,431
-Total registers : 8431
-Total pins : 8
+    Total combinational functions : 8,968
+    Dedicated logic registers : 8,438
+Total registers : 8438
+Total pins : 19
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0
